@@ -11,6 +11,7 @@ import sc3 from '../assets/sc3.jpg'
 import heroImg from '../assets/hero.jpg'
 import ProductTile from '../components/ProductTile'
 import Filters from '../components/Filters'
+import Footer from '../components/Footer'
 
 
 const products = [
@@ -210,8 +211,9 @@ const Shop = () => {
                     </div>
                 </section>
             </div >
-
+            <Footer />
         </main >
+
     )
 }
 

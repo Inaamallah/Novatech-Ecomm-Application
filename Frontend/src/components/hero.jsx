@@ -48,7 +48,7 @@ const Hero = () => {
                     {/* Right column - product card */}
                     <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-10">
                         <div className="relative">
-                            <div className="w-fit  bg-transparent rounded-4xl shadow-5xl flex items-center justify-center overflow-hidden size-100 ">
+                            <div className="w-fit  bg-transparent rounded-4xl shadow-5xl flex items-center justify-center overflow-hidden lg:size-100 sm:size-70 ">
                                 <img src={heroImg} alt="product" className="object-contain w-full h-full shadow-lg " />
                             </div>
 
@@ -57,12 +57,12 @@ const Hero = () => {
                                 <div className="text-xs">2,847 reviews</div>
                             </div>
 
-                            <div className="absolute -bottom-6 -left-6 bg-white text-black rounded-xl px-4 py-3 shadow-lg w-40">
+                            <div className="absolute -bottom-6 -left-6 bg-white text-black rounded-xl px-4 py-3 shadow-lg w-40 ">
                                 <div className="flex items-center gap-3">
                                     <div className="bg-[#2f7bff] text-white rounded-full w-8 h-8 flex items-center justify-center">🛒</div>
                                     <div>
                                         <div className="text-sm text-gray-500">ProBud X Pro</div>
-                                        <div className="text-lg font-bold text-[#2f7bff]">$249</div>
+                                        <div className="lg:text-lg sm:text-sm font-bold text-[#2f7bff]">$249</div>
                                     </div>
                                 </div>
                             </div>

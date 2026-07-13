@@ -19,7 +19,6 @@ const footerLinks = [
     {
         title: 'Support',
         links: [
-            { label: 'FAQ', to: '/faq' },
             { label: 'Cart', to: '/cart' },
         ],
     },
@@ -43,7 +42,7 @@ const Footer = () => {
                                 <Zap size={20} className='fill-current' />
                             </span>
                             Nova
-                            <span className='text-blue-500 '>Tech</span>
+                            <span className='text-blue-600 '>Tech</span>
                         </Link>
 
                         <p className='mt-5 max-w-sm text-sm leading-6 text-slate-300'>
