@@ -1,7 +1,32 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react'
+import axios from 'axios'
+
+
 
 const Login = () => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    })
+    const navigate = useNavigate()
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.post('http://localhost:3000/api/auth/login', formData,{withCredentials: true})
+            console.log(response)
+            alert('Logged in successfully')
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+            alert('Invalid email or password')
+        }
+        setFormData({
+            email: '',
+            password: ''
+        })
+    }
     return (
         <div className="min-h-screen bg-white flex items-center justify-center px-4 py-8">
             <div className="w-full max-w-md bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8">
@@ -29,6 +54,8 @@ const Login = () => {
                         </label>
 
                         <input
+                            value={formData.email}
+                            onChange={(e)=>setFormData({ ...formData, email: e.target.value })}
                             type="email"
                             id="email"
                             placeholder="Enter your email"
@@ -46,6 +73,8 @@ const Login = () => {
                         </label>
 
                         <input
+                            value={formData.password}
+                            onChange={(e)=>setFormData({ ...formData, password: e.target.value })}
                             type="password"
                             id="password"
                             placeholder="Enter your password"
@@ -65,6 +94,7 @@ const Login = () => {
 
                     {/* Login Button */}
                     <button
+                        onClick={handleSubmit}
                         type="submit"
                         className="w-full bg-blue-600 text-white py-3 rounded-3xl font-semibold hover:bg-blue-700 transition duration-300"
                     >

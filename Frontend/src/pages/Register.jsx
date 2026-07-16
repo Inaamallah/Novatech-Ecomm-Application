@@ -1,8 +1,41 @@
 import React from 'react'
+import axios from 'axios'
+import { useState } from 'react'
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        role: 'buyer'
+    })
+
+    const navigate = useNavigate()
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await axios.post('http://localhost:3000/api/auth/register', formData,{withCredentials: true})
+            alert('Account created successfully')
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+            alert('Error creating account')
+        }
+        setFormData({
+            fullName: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            role: 'buyer'
+        })
+
+        
+    }
+    
     return (
         <div className="min-h-screen bg-white flex items-center justify-center px-4 py-8">
             <div className="w-full max-w-md bg-white border border-gray-200 rounded-3xl shadow-xl p-6 sm:p-8">
@@ -30,6 +63,8 @@ const Register = () => {
                         </label>
 
                         <input
+                            value={formData.fullName}
+                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                             type="text"
                             id="name"
                             placeholder="Enter your full name"
@@ -46,7 +81,9 @@ const Register = () => {
                             Email
                         </label>
 
-                        <input
+                        <input 
+                            value={formData.email}
+                            onChange={(e)=>setFormData({ ...formData, email: e.target.value })}
                             type="email"
                             id="email"
                             placeholder="Enter your email"
@@ -64,6 +101,8 @@ const Register = () => {
                         </label>
 
                         <input
+                            value={formData.password}
+                            onChange={(e)=>setFormData({ ...formData, password: e.target.value })}
                             type="password"
                             id="password"
                             placeholder="Create a password"
@@ -81,6 +120,8 @@ const Register = () => {
                         </label>
 
                         <input
+                            value={formData.confirmPassword}
+                            onChange={(e)=>setFormData({ ...formData, confirmPassword: e.target.value })}
                             type="password"
                             id="confirmPassword"
                             placeholder="Confirm your password"
@@ -88,8 +129,29 @@ const Register = () => {
                         />
                     </div>
 
+                    {/* Role */}
+                    <div>
+                        <label
+                            htmlFor="role"
+                            className="block text-gray-700 font-medium mb-2"
+                        >
+                            Role
+                        </label>
+                    
+                        <select
+                            value={formData.role}
+                            onChange={(e)=>setFormData({ ...formData, role: e.target.value })}
+                            id="role"
+                            className="w-full px-5 py-3 border border-gray-300 rounded-3xl outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-200 transition"
+                        >
+                            <option value="buyer">Buyer</option>
+                            <option value="seller">Seller</option>
+                        </select>
+                    </div>
+
                     {/* Register Button */}
                     <button
+                        onClick={handleSubmit}
                         type="submit"
                         className="w-full bg-blue-600 text-white py-3 rounded-3xl font-semibold hover:bg-blue-700 transition duration-300"
                     >
