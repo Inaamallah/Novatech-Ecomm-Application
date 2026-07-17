@@ -23,11 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
-
+.env
 #Back
-Backend/.env
-Backend/package-lock.json
-Backend/node_modules
+novatech/Backend/.env
+novatech/Backend/package-lock.json
+novatech/Backend/node_modules
 
 #Frontend
 Frontend/.env
