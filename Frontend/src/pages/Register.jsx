@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios'
-import { useState } from 'react'
-
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from '../context/Auth.context'
 
 const Register = () => {
 
@@ -15,12 +14,15 @@ const Register = () => {
     })
 
     const navigate = useNavigate()
+    const { fetchData } = useContext(AuthContext)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:3000/api/auth/register', formData,{withCredentials: true})
+            await axios.post('http://localhost:3000/api/auth/register', formData,{withCredentials: true})
+            await fetchData()
             alert('Account created successfully')
-            navigate('/')
+            navigate('/dashboard')
         } catch (error) {
             console.log(error)
             alert('Error creating account')

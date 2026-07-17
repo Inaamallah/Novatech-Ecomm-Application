@@ -1,7 +1,37 @@
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { Search, Heart, ShoppingCart, Zap } from 'lucide-react'
+import { useContext } from 'react'
+import {AuthContext} from '../context/Auth.context'
+import axios from 'axios'
+
+
+
 
 const Nav = () => {
+    const {islogin,userdata,fetchData} = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    async function handleLogout() {
+        try {
+            await axios.post(
+                "http://localhost:3000/api/auth/logout",
+                {},
+                {
+                    withCredentials: true,
+                }
+            );
+    
+            await fetchData();
+    
+            alert("See you soon :)");
+            navigate("/");
+        } 
+        catch (err) {
+            console.log(err);
+            alert("Error logging out");
+        }
+    }
+
     return (
         <div className='text-black  bg-white flex justify-between sm:px-5 lg:px-20 py-5 items-center '>
             <div className='flex items-center'>
@@ -24,17 +54,43 @@ const Nav = () => {
             </div>
 
             <div className='flex items-center gap-10'>
-                <div className='hidden md:flex items-center gap-4'>
+                <div className='hidden lg:flex items-center gap-4'>
                     <Search />
                     <Heart />
                     <ShoppingCart />
                 </div>
 
-                <div className='flex items-center gap-4'>
-                    <Link to="/login" className='bg-blue-600 text-white px-4 py-2 rounded-3xl hover:bg-blue-700 transition'>
-                        Login/Register
-                    </Link>
-                </div>
+                {
+                islogin ? (
+                    <div className='gap-4 flex flex-col items-center'>
+
+                        <div className='hidden lg:flex'>
+                            <Link to = '/dashboard'>
+                                Welcome {userdata?.fullName}
+                            </Link>
+                        </div >
+
+                        <div>
+                            <button onClick = {handleLogout} className='bg-blue-600 text-white px-4 py-2 rounded-3xl hover:bg-blue-700 transition'>
+                                Logout
+                            </button>
+                        </div >
+                        
+                    </div>
+
+                    ) : (
+                        <Link
+                            to="/login"
+                            className='bg-blue-600 text-white px-4 py-2 rounded-3xl hover:bg-blue-700 transition'
+                        >
+                            Login/Register
+                        </Link>
+                    )
+                }
+                
+                    
+
+                
             </div>
         </div>
 

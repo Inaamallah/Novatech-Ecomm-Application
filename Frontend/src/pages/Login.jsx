@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from 'react'
 import axios from 'axios'
+import { AuthContext } from '../context/Auth.context'
 
 
 
@@ -11,13 +11,15 @@ const Login = () => {
         password: ''
     })
     const navigate = useNavigate()
+    const { fetchData } = useContext(AuthContext)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:3000/api/auth/login', formData,{withCredentials: true})
-            console.log(response)
+            await axios.post('http://localhost:3000/api/auth/login', formData,{withCredentials: true})
+            await fetchData()
             alert('Logged in successfully')
-            navigate('/')
+            navigate('/dashboard')
         } catch (error) {
             console.log(error)
             alert('Invalid email or password')
