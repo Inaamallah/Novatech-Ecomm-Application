@@ -25,11 +25,9 @@ dist-ssr
 
 .env
 #Back
-novatech/Backend/.env
-novatech/Backend/package-lock.json
-novatech/Backend/node_modules
+Backend/.env
+Backend/node_modules
 
 #Frontend
 Frontend/.env
-Frontend/package-lock.json
 Frontend/node_modules

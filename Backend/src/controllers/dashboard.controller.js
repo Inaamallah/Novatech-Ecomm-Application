@@ -3,11 +3,9 @@ const AuthModel = require('../models/auth.model');
 async function getDashboardData(req, res) {
     try {
         const id = req.user.id
-        console.log(id)
         const user = await AuthModel.findOne({
            _id:id
         });
-        console.log(user)
         if(!user){
             return res.status(404).json({message:"User not found"});
         }
