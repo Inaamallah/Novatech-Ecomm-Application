@@ -3,7 +3,16 @@ const Product = require('../models/product.model')
 
 async function getProducts(req, res) {
     try {
-        const products = await Product.find()
+        const id = req.user.id
+        if(!id){
+            return res.status(400).json({message:'Please Login'})
+        }
+        // Change from findById(id) to find({ seller: id })
+        const products = await Product.find({ seller: id })
+        
+        if(!products || products.length === 0){
+            return res.status(404).json({message:'No products found'})
+        }
         res.status(200).json({ products })
     } catch (error) {
         console.log(error)
@@ -22,4 +31,23 @@ async function createProduct(req,res){
         res.status(500).json({message:'Internal Server Error'})
     }
 }
-module.exports = {getProducts,createProduct}
+
+async function deleteProduct(req,res){
+    try {
+        const {id} = req.params
+        if(!id){
+            return res.status(400).json({message:'Product ID is required'})
+        }
+        const product = await Product.findByIdAndDelete(id)
+        if(!product){
+            return res.status(404).json({message:'Product not found'})
+        }
+        res.status(200).json({message:'Product deleted successfully',product})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message:'Internal Server Error'})
+    }
+}
+
+
+module.exports = {getProducts,createProduct,deleteProduct}

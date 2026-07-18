@@ -127,11 +127,13 @@ const Dashboard = () => {
                         </div>
                         {/* List Product button for seller */}
                         {profile.Role == 'seller' && (
-                            <div className="flex items-center justify-center my-10">
-                                <button className='px-5  py-3  bg-blue-600 text-white text-xl rounded-2xl hover:bg-blue-700 transition duration-300 lg:text-2xl lg:px-20 lg:py-5  '>
-                                    List Product
-                                </button>
-
+                            <div className="flex items-center justify-center gap-5 my-10">
+                                <Link to="/all-products" className='px-5  py-3  bg-blue-600 text-white text-xl rounded-2xl hover:bg-blue-700 transition duration-300 lg:text-2xl lg:px-20 lg:py-5  '>
+                                    All Products
+                                </Link>
+                                <Link to='/create-product' className='px-5  py-3  bg-blue-600 text-white text-xl rounded-2xl hover:bg-blue-700 transition duration-300 lg:text-2xl lg:px-20 lg:py-5  '>
+                                    Add New Product
+                                </Link>
                             </div>
                         )}
 

@@ -10,6 +10,8 @@ import PagenotFound from './pages/PagenotFound';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard'
+import CreateProduct from './pages/CreateProduct'
+import GetProducts from './pages/GetProducts'
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path = "/dashboard" element={<Dashboard />} />
+        <Route path = "/create-product" element={<CreateProduct />} />
+        <Route path = "/all-products" element = {<GetProducts />} />
 
 
       </Routes>
