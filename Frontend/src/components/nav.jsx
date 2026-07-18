@@ -1,5 +1,5 @@
 import { Link,useNavigate } from 'react-router-dom'
-import { Search, Heart, ShoppingCart, Zap } from 'lucide-react'
+import { Search, Heart, ShoppingCart, Zap,UserRound } from 'lucide-react'
 import { useContext } from 'react'
 import {AuthContext} from '../context/Auth.context'
 import axios from 'axios'
@@ -62,11 +62,11 @@ const Nav = () => {
 
                 {
                 islogin ? (
-                    <div className='gap-4 flex flex-col items-center'>
+                    <div className='gap-4 flex items-center'>
 
-                        <div className='hidden lg:flex'>
+                        <div className='flex'>
                             <Link to = '/dashboard'>
-                                Welcome {userdata?.fullName}
+                                <UserRound color="#034efc" />
                             </Link>
                         </div >
 

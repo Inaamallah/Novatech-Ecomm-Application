@@ -11,7 +11,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard'
 import CreateProduct from './pages/CreateProduct'
-import GetProducts from './pages/GetProducts'
+import GetSellerProducts from './pages/GetProducts'
+import ProductsDetails from './pages/ProductsDetails'
 
 const App = () => {
   return (
@@ -29,7 +30,8 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path = "/dashboard" element={<Dashboard />} />
         <Route path = "/create-product" element={<CreateProduct />} />
-        <Route path = "/all-products" element = {<GetProducts />} />
+        <Route path = "/all-products" element = {<GetSellerProducts />} />
+        <Route path = "/product-details/:id" element = {<ProductsDetails />} />
 
 
       </Routes>

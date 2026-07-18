@@ -13,7 +13,8 @@ const CreateProduct = () => {
     description:'',
     price:'',
     image:null,
-    category:''
+    category:'',
+    rating:0,
   })  
 
   async function formSubmission(e){
@@ -25,6 +26,7 @@ const CreateProduct = () => {
     formData.append('price', productData.price)
     formData.append('category', productData.category)
     formData.append('image', productData.image)
+    formData.append('rating',productData.rating)
 
     const response = await axios.post('http://localhost:3000/api/product/create',formData,
         {withCredentials:true})
@@ -35,7 +37,8 @@ const CreateProduct = () => {
         description:'',
         price:'',
         image:null,
-        category:''
+        category:'',
+        rating:0
     })
 
     navigate('/all-products')
@@ -141,6 +144,28 @@ const CreateProduct = () => {
               <option value="Smart Watch">Smart Watch</option>
               <option value="Gaming">Gaming</option>
               <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+
+          {/* Rating */}
+          <div>
+            
+            <label className="block mb-2 font-medium">
+              Rating
+            </label>
+            <select
+            onChange={handleChange}
+            name="rating"
+            value={productData.rating}
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-blue-600"
+            required
+            >
+              <option value="">Select Rating</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
 

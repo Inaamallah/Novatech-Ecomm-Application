@@ -54,7 +54,6 @@ const Hero = () => {
 
                             <div className="absolute -top-4 -right-4 bg-white text-black rounded-xl px-3 py-2 shadow">
                                 <div className="text-xs text-yellow-500">★★★★★</div>
-                                <div className="text-xs">2,847 reviews</div>
                             </div>
 
                             <div className="absolute -bottom-6 -left-6 bg-white text-black rounded-xl px-4 py-3 shadow-lg w-40 ">

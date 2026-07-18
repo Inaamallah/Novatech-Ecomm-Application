@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const GetProducts = () => {
+const GetSellerProducts = () => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -10,7 +10,7 @@ const GetProducts = () => {
     async function fetchProducts() {
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/product/get",
+                "http://localhost:3000/api/product/getsellerproducts",
                 { withCredentials: true } // Added credentials so the cookie is sent
             );
             setProducts(response.data.products);
@@ -54,9 +54,18 @@ const GetProducts = () => {
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-5">
 
-            <h1 className="text-4xl font-bold text-center mb-10">
-                All <span className="text-blue-600">Products</span>
-            </h1>
+            <div>
+                <h1 className="text-4xl font-bold text-center mb-10">
+                    All <span className="text-blue-600">Products</span>
+                </h1>
+                
+            </div>
+            <div className="flex items-center justify-center gap-5 my-10">
+                    <Link to='/create-product' className='px-5  py-3  bg-blue-600 text-white text-xl rounded-2xl hover:bg-blue-700 transition duration-300 lg:text-xl lg:px-15 lg:py-5  '>
+                        Add New Product
+                    </Link>
+            </div>
+            
 
             <div className="max-w-6xl mx-auto flex flex-col gap-6">
                 {products.length === 0 ? (
@@ -64,11 +73,7 @@ const GetProducts = () => {
                     <div className="text-center text-gray-500 text-xl mt-10">
                         No products available.
                     </div>
-                    <div className="flex items-center justify-center gap-5 my-10">
-                        <Link to='/create-product' className='px-5  py-3  bg-blue-600 text-white text-xl rounded-2xl hover:bg-blue-700 transition duration-300 lg:text-xl lg:px-15 lg:py-5  '>
-                            Add New Product
-                        </Link>
-                    </div>
+                    
                     </>
                 ) : (
                 
@@ -129,4 +134,4 @@ const GetProducts = () => {
     );
 };
 
-export default GetProducts;
+export default GetSellerProducts;

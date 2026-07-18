@@ -8,16 +8,25 @@ import sc2 from '../assets/sc2.jpg'
 import sc3 from '../assets/sc3.jpg'
 
 
-const Shopbycategory = () => {
+const Shopbycategory = ({ products = [] }) => {
 
-    const CardsList = [
-        { image: fp1, productName: 'Audio', productNumber: '12' },
-        { image: fp2, productName: 'Input Devices', productNumber: '8' },
-        { image: fp4, productName: 'Connectivity', productNumber: '13' },
-        { image: sc1, productName: 'Charging', productNumber: '22' },
-        { image: sc2, productName: 'Protection', productNumber: '15' },
-        { image: sc3, productName: 'Desk Setup', productNumber: '9' }
+    const categories = [
+        { name: 'Laptop', image: fp1 },
+        { name: 'Smartphone', image: fp2 },
+        { name: 'Headphones', image: fp4 },
+        { name: 'Smart Watch', image: sc1 },
+        { name: 'Gaming', image: sc2 },
+        { name: 'Accessories', image: sc3 }
     ]
+
+    const CardsList = categories.map(cat => {
+        const count = products.filter(p => p.category === cat.name).length
+        return {
+            image: cat.image,
+            productName: cat.name,
+            productNumber: count.toString()
+        }
+    })
 
     return (
         <section className='bg-[#f8fafc] w-full mt-20 py-16'>

@@ -7,13 +7,13 @@ const Filters = ({ selectedcategory, setselectedcategory, value, setvalue }) => 
 
 
     const CatList = [
-        { Title: 'All Products', Number: 8 },
-        { Title: 'Audio', Number: 2 },
-        { Title: 'Input Devices', Number: 2 },
-        { Title: 'Connectivity', Number: 2 },
-        { Title: 'Charging', Number: 1 },
-        { Title: 'Protection', Number: 1 },
-        { Title: 'Desk Setup', Number: 0 },
+        { Title: 'All Products' },
+        { Title: 'Laptop' },
+        { Title: 'Smartphone' },
+        { Title: 'Headphones' },
+        { Title: 'Smart Watch' },
+        { Title: 'Gaming' },
+        { Title: 'Accessories' },
     ]
     return (
         <aside className='w-full border-r border-slate-200 bg-white px-5 py-4 mt-15 rounded-2xl lg:w-64 lg:shrink-0'>
@@ -30,7 +30,7 @@ const Filters = ({ selectedcategory, setselectedcategory, value, setvalue }) => 
                 ))}
             </div>
             <div className='w-full pt-5 '>
-                <input className='w-full' type='range' min='0' max='500' value={value} onChange={(e) => {
+                <input className='w-full' type='range' min='0' max='100000' value={value} onChange={(e) => {
                     console.log(Number(e.target.value))
                     setvalue(Number(e.target.value))
                 }} ></input>
