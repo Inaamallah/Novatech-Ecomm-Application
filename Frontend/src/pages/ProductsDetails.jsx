@@ -12,7 +12,7 @@ const ProductsDetails = () => {
     async function fetchData() {
         try {
             const response = await axios.get(
-                `http://localhost:3000/api/product/getproductbyid/${id}`,
+                `${import.meta.env.VITE_API_URL}/api/product/getproductbyid/${id}`,
                 {
                     withCredentials: true,
                 }

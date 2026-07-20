@@ -19,7 +19,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await axios.post('http://localhost:3000/api/auth/register', formData,{withCredentials: true})
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, formData,{withCredentials: true})
             await fetchData()
             alert('Account created successfully')
             navigate('/dashboard')

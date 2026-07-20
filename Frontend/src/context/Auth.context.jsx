@@ -10,7 +10,7 @@ export const AuthProvider = ({children}) =>{
 
     async function fetchData(){
         try{
-            const response = await axios.get("http://localhost:3000/api/dashboard", {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/dashboard`, {
                 withCredentials: true,
             })
             setUserData(response.data.data)

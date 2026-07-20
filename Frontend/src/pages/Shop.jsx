@@ -20,7 +20,7 @@ const Shop = () => {
     async function fetchProducts() {
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/product/getallproducts",
+                `${import.meta.env.VITE_API_URL}/api/product/getallproducts`,
                 { withCredentials: true } 
             );
             setProducts(response.data.products);

@@ -28,7 +28,7 @@ const CreateProduct = () => {
     formData.append('image', productData.image)
     formData.append('rating',productData.rating)
 
-    const response = await axios.post('http://localhost:3000/api/product/create',formData,
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/product/create`,formData,
         {withCredentials:true})
     console.log(response)
     

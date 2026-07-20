@@ -10,7 +10,7 @@ const GetSellerProducts = () => {
     async function fetchProducts() {
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/product/getsellerproducts",
+                `${import.meta.env.VITE_API_URL}/api/product/getsellerproducts`,
                 { withCredentials: true } // Added credentials so the cookie is sent
             );
             setProducts(response.data.products);
@@ -24,7 +24,7 @@ const GetSellerProducts = () => {
     async function deleteproduct(id){
         try{
             const response = await axios.delete(
-                `http://localhost:3000/api/product/delete/${id}`,
+                `${import.meta.env.VITE_API_URL}/api/product/delete/${id}`,
                 {withCredentials:true}
             )
             console.log(response.data)
