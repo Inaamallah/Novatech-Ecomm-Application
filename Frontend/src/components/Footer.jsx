@@ -15,13 +15,13 @@ const footerLinks = [
             { label: 'About Us', to: '/about' },
             { label: 'Contact', to: '/contact' },
         ],
-    },
-    {
-        title: 'Support',
-        links: [
-            { label: 'Cart', to: '/cart' },
-        ],
-    },
+    }
+    // {
+    //     title: 'Support',
+    //     links: [
+    //         { label: 'Cart', to: '/cart' },
+    //     ],
+    // },
 ]
 
 const socialLinks = [
@@ -49,7 +49,7 @@ const Footer = () => {
                             Premium technology accessories engineered for those who demand more. Designed in San Francisco, built for everywhere.
                         </p>
 
-                        <div className='mt-8 flex gap-3'>
+                        {/* <div className='mt-8 flex gap-3'>
                             {socialLinks.map(({ label, icon: Icon }) => (
                                 <a
                                     key={label}
@@ -60,7 +60,7 @@ const Footer = () => {
                                     <Icon size={18} />
                                 </a>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className='grid grid-cols-1 gap-8 sm:grid-cols-3'>

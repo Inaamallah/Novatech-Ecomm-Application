@@ -1,6 +1,7 @@
 import React from 'react'
 import heroImg from '../assets/hero.jpg'
 import { Circle } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
@@ -25,8 +26,8 @@ const Hero = () => {
                         </p>
 
                         <div className="mt-8 flex items-center gap-6">
-                            <button className="bg-[#2f7bff] hover:bg-[#1f63e6] transition px-6 py-3 rounded-full text-white font-medium shadow-lg">Shop Collection</button>
-                            <button className="text-gray-400 hover:text-white">Our Story</button>
+                            <Link to = '/shop' className="bg-[#2f7bff] hover:bg-[#1f63e6] transition px-6 py-3 rounded-full text-white font-medium shadow-lg">Shop Collection</Link>
+                            <Link to = '/about' className="text-gray-400 hover:text-white">Our Story</Link>
                         </div>
 
                         <div className="mt-12 border-t border-white/5 pt-8 flex gap-12 text-gray-300">

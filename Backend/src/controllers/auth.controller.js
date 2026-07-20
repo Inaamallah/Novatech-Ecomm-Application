@@ -19,13 +19,19 @@ async function register(req, res) {
         }, process.env.JWT_SECRET)
 
 
-        res.cookie('token', token)
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        })
+
         res.status(201).json({
             message: 'User registered successfully'
         })
     } 
     catch (error) {
-        console.log(error)
+        
         res.status(500).json({
             message: 'Error registering user',
             error: error.message
@@ -57,13 +63,18 @@ async function login(req, res) {
             role: user.role
         }, process.env.JWT_SECRET)
 
-        res.cookie('token', token)
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        })
+
         res.status(200).json({
             message: 'Logged in successfully'
         })
     }
     catch (error) {
-        console.log(error)
         res.status(500).json({
             message: 'Error logging in',
             error: error.message
@@ -72,11 +83,20 @@ async function login(req, res) {
 }
 
 async function logout(req,res){
-    res.clearCookie("token");
+    try{
+        res.clearCookie("token", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    })
 
     res.status(200).json({
         message: "Logged out successfully"
     });
+    }
+    catch(err){
+
+    }
 }
 
 module.exports = { register, login, logout }

@@ -54,11 +54,11 @@ const Nav = () => {
             </div>
 
             <div className='flex items-center gap-10'>
-                <div className='hidden lg:flex items-center gap-4'>
+                {/* <div className='hidden lg:flex items-center gap-4'>
                     <Search />
                     <Heart />
                     <ShoppingCart />
-                </div>
+                </div> */}
 
                 {
                 islogin ? (
