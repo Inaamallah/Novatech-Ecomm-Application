@@ -8,7 +8,7 @@ const app = express()
 
 
 app.use(cors({
-    origin: ['http://localhost:5173',"https://YOUR_FRONTEND.vercel.app"],
+    origin: ['http://localhost:5173',"https://novatech-ecomm-application.vercel.app"],
     credentials: true
 }))
 
