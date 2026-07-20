@@ -12,7 +12,7 @@ async function sellerAuthentication(req, res, next) {
     catch (error) {
         
         res.status(500).json({
-            message: 'Error authenticating token in Seller Authentication Middleware',
+            message: 'Error authenticating the token in Seller Authentication Middleware',
             error: error.message
         })
     }

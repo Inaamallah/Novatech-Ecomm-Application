@@ -47,7 +47,7 @@ const Nav = () => {
 
             <div className=' md:gap-4 opacity-80 sm:text-[1rem] lg:text-[1rem] hidden md:flex'>
                 <Link to="/shop">Shop</Link>
-                <Link to="/categories">Categories</Link>
+                {/* <Link to="/categories">Categories</Link> */}
                 <Link to="/about">About</Link>
                 {/* <Link to="/faq">FAQ</Link> */}
                 <Link to="/contact">Contact</Link>
